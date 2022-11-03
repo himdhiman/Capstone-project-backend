@@ -2,10 +2,10 @@
 {
     public class FundTransfer
     {
-        public int TransferId { set; get; }
-        public long SourceAccountNumber { set; get; }
-        public long destinationAccountNumber { set; get; }
-        public int DestinationAccountTypeId { set; get; }
-        public float TransferAmount { set; get; }
+        public int TransferId { get; set; }
+        public long SourceAccountNumber { get; set; }
+        public long destinationAccountNumber { get; set; }
+        public int DestinationAccountTypeId { get; set; }
+        public float TransferAmount { get; set; }
     }
 }

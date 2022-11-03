@@ -2,11 +2,11 @@
 {
     public class CheckBookDetails
     {
-        public int CheckBookId { set; get; }
-        public long AccountNumber { set; get; }
-        public DateTime RequestedDate { set; get; }
-        public DateTime IssueDate { set; get; }
-        public int Priority { set; get; }
+        public int CheckBookId { get; set; }
+        public long AccountNumber { get; set; }
+        public DateTime RequestedDate { get; set; }
+        public DateTime IssueDate { get; set; }
+        public int Priority { get; set; }
 
     }
 }
