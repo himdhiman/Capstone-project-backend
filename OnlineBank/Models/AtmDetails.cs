@@ -1,8 +1,13 @@
-﻿namespace OnlineBank.API.Models
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace OnlineBank.API.Models
 {
     public class AtmDetails
     {
-        public int Id { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
         public long AccountNumber { get; set; }
         public int AtmPin { get; set; }
     }

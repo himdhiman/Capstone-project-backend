@@ -1,17 +1,22 @@
-﻿namespace OnlineBank.API.Models
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace OnlineBank.API.Models
 {
     public class User
     {
-        public int Id { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
         public long AccountNumber { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
         public string? MiddleName { get; set; }
         public string? LastName { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public string[] SecurityQuestions { get; set; }
-        public string[] SecurityAnswers { get; set; }
+        public string UserName { get; set; } = null!;
+        public string Password { get; set; } = null!;
+        public string[] SecurityQuestions { get; set; } = null!;
+        public string[] SecurityAnswers { get; set; } = null!;
         public int AccountTypeId { get; set; }
-        public string MobileNumber { get; set; }
+        public string MobileNumber { get; set; } = null!;
     }
 }
