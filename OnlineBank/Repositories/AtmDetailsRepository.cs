@@ -14,6 +14,7 @@ namespace OnlineBank.API.Repositories
             _atmDetails = database.GetCollection<AtmDetails>(mongoCollections.Value.AtmDetailsCollection);
         }
 
+
         public async Task<List<AtmDetails>> GetAsync() =>
             await _atmDetails.Find(_ => true).ToListAsync();
 

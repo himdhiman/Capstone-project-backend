@@ -20,6 +20,7 @@ namespace OnlineBank.API.Services
         public IRepository<Account> AccountsDataObject => new AccountRepository(_dbContext.Database, _mongoCollections);
         public IRepository<AtmDetails> AtmDetailsDataObject => new AtmDetailsRepository(_dbContext.Database, _mongoCollections);
 
+        public IAccountBalance<AtmDetails> BalanceDetailsObject => new CheckBalanceRepository(_dbContext.Database, _mongoCollections);
 
     }
 }
