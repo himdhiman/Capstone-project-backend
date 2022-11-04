@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using OnlineBank.API.Interfaces;
 using OnlineBank.API.Models;
 using OnlineBank.API.Services;
 
@@ -9,7 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettings"));
-builder.Services.AddSingleton<UsersService>();
+builder.Services.AddSingleton<MongoContext>();
+//builder.Services.AddSingleton<UsersService>();
+builder.Services.AddScoped<IDataService, DataService>();
 
 
 

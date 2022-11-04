@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineBank.API.Interfaces;
 using OnlineBank.API.Models;
 using OnlineBank.API.Services;
 
@@ -8,11 +9,11 @@ namespace OnlineBank.API.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly UsersService _usersService;
+        private readonly IRepository<User> _usersService;
 
-        public UserController(UsersService usersService)
+        public UserController(IDataService dataService)
         {
-            _usersService = usersService;
+            _usersService = dataService.Users;
         }
 
         [HttpGet]
