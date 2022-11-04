@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineBank.API.Interfaces;
 using OnlineBank.API.Models;
-using OnlineBank.API.Services;
 
 namespace OnlineBank.API.Controllers
 {
@@ -37,7 +36,5 @@ namespace OnlineBank.API.Controllers
 
             return NoContent();
         }
-
-
     }
 }

@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using Microsoft.Extensions.Options;
+using MongoDB.Driver;
 using OnlineBank.API.Interfaces;
 using OnlineBank.API.Models;
 
@@ -8,9 +9,9 @@ namespace OnlineBank.API.Repositories
     {
         private readonly IMongoCollection<User> _users;
 
-        public UserRepository(IMongoDatabase database)
+        public UserRepository(IMongoDatabase database, IOptions<MongoCollections> mongoCollections)
         {
-            _users = database.GetCollection<User>("Users");
+            _users = database.GetCollection<User>(mongoCollections.Value.UsersCollection);
         }
 
         public async Task<List<User>> GetAsync() =>

@@ -10,8 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettings"));
+builder.Services.Configure<MongoCollections>(builder.Configuration.GetSection("MongoCollections"));
+
 builder.Services.AddSingleton<MongoContext>();
-//builder.Services.AddSingleton<UsersService>();
 builder.Services.AddScoped<IDataService, DataService>();
 
 
