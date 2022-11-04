@@ -20,8 +20,8 @@ namespace OnlineBank.API.Repositories
         public async Task<AtmDetails?> GetAsync(string id) =>
             await _atmDetails.Find(x => x.Id == id).FirstOrDefaultAsync();
 
-        public async Task CreateAsync(AtmDetails newDeatils) =>
-            await _atmDetails.InsertOneAsync(newDeatils);
+        public async Task CreateAsync(AtmDetails newDetails) =>
+            await _atmDetails.InsertOneAsync(newDetails);
 
         public async Task UpdateAsync(string id, AtmDetails updatedDetails) =>
             await _atmDetails.ReplaceOneAsync(x => x.Id == id, updatedDetails);
