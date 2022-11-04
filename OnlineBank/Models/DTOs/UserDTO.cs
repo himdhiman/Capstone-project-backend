@@ -1,14 +1,7 @@
-﻿using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-
-namespace OnlineBank.API.Models
+﻿namespace OnlineBank.API.Models.DTOs
 {
-    public class User
+    public class UserDTO
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string? Id { get; set; }
-        public long AccountNumber { get; set; }
         public string Name { get; set; } = null!;
         public string? MiddleName { get; set; }
         public string? LastName { get; set; }

@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using OnlineBank.API.Interfaces;
 using OnlineBank.API.Models;
+using OnlineBank.API.Models.DTOs;
 
 namespace OnlineBank.API.Controllers
 {
@@ -9,10 +11,12 @@ namespace OnlineBank.API.Controllers
     public class UserController : ControllerBase
     {
         private readonly IRepository<User> _usersService;
+        private readonly IMapper _mapper;
 
-        public UserController(IDataService dataService)
+        public UserController(IDataService dataService, IMapper mapper)
         {
             _usersService = dataService.UsersDataObject;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -30,9 +34,10 @@ namespace OnlineBank.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(User newUser)
+        public async Task<IActionResult> Post(UserDTO newUser)
         {
-            await _usersService.CreateAsync(newUser);
+            User user = _mapper.Map<User>(newUser);
+            await _usersService.CreateAsync(user);
 
             return NoContent();
         }

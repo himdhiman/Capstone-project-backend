@@ -2,9 +2,9 @@
 
 namespace OnlineBank.API.HelperTools
 {
-    public class AccountNumberGenerator
+    static class AccountNumberGenerator
     {
-        public string acc()
+        public static string GenerateRandomAccountNumber()
         {
             Random random = new Random();
 

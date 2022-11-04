@@ -1,5 +1,7 @@
+using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using OnlineBank.API.Interfaces;
+using OnlineBank.API.Mappers;
 using OnlineBank.API.Models;
 using OnlineBank.API.Services;
 
@@ -15,6 +17,12 @@ builder.Services.Configure<MongoCollections>(builder.Configuration.GetSection("M
 builder.Services.AddSingleton<MongoContext>();
 builder.Services.AddScoped<IDataService, DataService>();
 
+var mapperConfig = new MapperConfiguration(cfg =>
+{
+    cfg.AddProfile(new AutoMapperProfile());
+});
+var mapper = mapperConfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
 
 
 
