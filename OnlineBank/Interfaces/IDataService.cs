@@ -4,7 +4,7 @@ namespace OnlineBank.API.Interfaces
 {
     public interface IDataService
     {
-        public IRepository<User> UsersDataObject { get; }
+        public IUserRepository UsersDataObject { get; }
         public IRepository<Account> AccountsDataObject { get; }
         public IRepository<AtmDetails> AtmDetailsDataObject { get; }
 

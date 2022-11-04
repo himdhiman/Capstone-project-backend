@@ -1,0 +1,9 @@
+﻿using OnlineBank.API.Models;
+
+namespace OnlineBank.API.Interfaces
+{
+    public interface IUserRepository : IRepository<User>
+    {
+        Task<User?> GetAsyncByUsername(string username);
+    }
+}

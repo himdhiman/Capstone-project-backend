@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using OnlineBank.API.Validators;
 
 namespace OnlineBank.API.Models
 {
@@ -12,6 +13,8 @@ namespace OnlineBank.API.Models
         public string Name { get; set; } = null!;
         public string? MiddleName { get; set; }
         public string? LastName { get; set; }
+
+        //[UsernameValidator]
         public string UserName { get; set; } = null!;
         public string Password { get; set; } = null!;
         public List<string> SecurityQuestions { get; set; } = null!;
