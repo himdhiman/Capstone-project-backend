@@ -11,6 +11,7 @@ namespace OnlineBank.API.Mappers
         {
             CreateMap<UserDTO, User>()
                 .ForMember(dest => dest.AccountNumber, src => src.MapFrom(u => AccountNumberGenerator.GenerateRandomAccountNumber()));
+            CreateMap<AtmDetails, AccountBalanceReturnObject>();
         }
     }
 }

@@ -5,7 +5,7 @@ using OnlineBank.API.Models;
 
 namespace OnlineBank.API.Repositories
 {
-    public class AtmDetailsRepository : IRepository<AtmDetails>
+    public class AtmDetailsRepository : IAtmDetailsRepository
     {
         private readonly IMongoCollection<AtmDetails> _atmDetails;
 
@@ -19,6 +19,9 @@ namespace OnlineBank.API.Repositories
 
         public async Task<AtmDetails?> GetAsync(string id) =>
             await _atmDetails.Find(x => x.Id == id).FirstOrDefaultAsync();
+
+        public async Task<AtmDetails?> GetAsync(long AccountNumber) =>
+            await _atmDetails.Find(x => x.AccountNumber == AccountNumber).FirstOrDefaultAsync();
 
         public async Task CreateAsync(AtmDetails newDetails) =>
             await _atmDetails.InsertOneAsync(newDetails);

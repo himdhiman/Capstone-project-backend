@@ -6,7 +6,7 @@ namespace OnlineBank.API.Interfaces
     {
         public IUserRepository UsersDataObject { get; }
         public IRepository<Account> AccountsDataObject { get; }
-        public IRepository<AtmDetails> AtmDetailsDataObject { get; }
+        public IAtmDetailsRepository AtmDetailsDataObject { get; }
 
         public IAccountBalance<AtmDetails> BalanceDetailsObject { get; }
 

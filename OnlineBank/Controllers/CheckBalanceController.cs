@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using OnlineBank.API.Interfaces;
 using OnlineBank.API.Models;
+using OnlineBank.API.Models.DTOs;
 
 namespace OnlineBank.API.Controllers
 {
@@ -9,25 +11,26 @@ namespace OnlineBank.API.Controllers
     [ApiController]
     public class CheckBalanceController : ControllerBase
     {
-        private readonly IAccountBalance<AtmDetails> _usersService;
+        private readonly IAccountBalance<AtmDetails> _atmDetails;
+        private readonly IMapper _mapper;
 
-        public CheckBalanceController(IDataService dataService)
+        public CheckBalanceController(IDataService dataService, IMapper mapper)
         {
-            _usersService = dataService.BalanceDetailsObject;
+            _atmDetails = dataService.BalanceDetailsObject;
+            _mapper = mapper;
         }
 
 
-        [HttpGet("{acnt:length(4)}")]
-        public async Task<ActionResult<AtmDetails>> Get(long acnt)
+        [HttpGet("{accno:length(10)}")]
+        public async Task<ActionResult<AccountBalanceReturnObject>> Get(long accno)
         {
-            var user = await _usersService.GetAsync(acnt);
-            if (user is null)
+            var atmDetails = await _atmDetails.GetAsync(accno);
+            if (atmDetails is null)
             {
                 return NotFound();
             }
-            return user;
+            AccountBalanceReturnObject returnObject = _mapper.Map<AccountBalanceReturnObject>(atmDetails);
+            return returnObject;
         }
-
-
     }
 }

@@ -10,7 +10,6 @@ namespace OnlineBank.API.Models
         public string? Id { get; set; }
         public long AccountNumber { get; set; }
         public int AtmPin { get; set; }
-
         public float AccountBalance { get; set; }
     }
 }
