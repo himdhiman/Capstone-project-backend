@@ -12,7 +12,7 @@ namespace OnlineBank.API.Controllers
 
         public UserController(IDataService dataService)
         {
-            _usersService = dataService.Users;
+            _usersService = dataService.UsersDataObject;
         }
 
         [HttpGet]

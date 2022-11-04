@@ -16,8 +16,10 @@ namespace OnlineBank.API.Services
             _mongoCollections = mongoCollections;
         }
 
-        public IRepository<User> Users => new UserRepository(_dbContext.Database, _mongoCollections);
-        public IRepository<Account> Accounts => new AccountRepository(_dbContext.Database, _mongoCollections);
+        public IRepository<User> UsersDataObject => new UserRepository(_dbContext.Database, _mongoCollections);
+        public IRepository<Account> AccountsDataObject => new AccountRepository(_dbContext.Database, _mongoCollections);
+        public IRepository<AtmDetails> AtmDetailsDataObject => new AtmDetailsRepository(_dbContext.Database, _mongoCollections);
+
 
     }
 }
