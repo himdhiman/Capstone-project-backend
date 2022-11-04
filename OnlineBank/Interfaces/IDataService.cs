@@ -8,5 +8,7 @@ namespace OnlineBank.API.Interfaces
         public IRepository<Account> AccountsDataObject { get; }
         public IRepository<AtmDetails> AtmDetailsDataObject { get; }
 
+        public IAccountBalance<AtmDetails> BalanceDetailsObject { get; }
+
     }
 }

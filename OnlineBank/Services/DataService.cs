@@ -22,5 +22,7 @@ namespace OnlineBank.API.Services
         public IRepository<CheckBookDetails> CheckBookDetailsDataObject => new CheckBookDetailsRepository(_dbContext.Database, _mongoCollections);
         public IRepository<FundTransfer> FundTransferDataObject => new FundTransferRepository(_dbContext.Database, _mongoCollections);
         public IRepository<Transaction> TransactionsDataObject => new TransactionRepository(_dbContext.Database, _mongoCollections);
+
+        public IAccountBalance<AtmDetails> BalanceDetailsObject => new CheckBalanceRepository(_dbContext.Database, _mongoCollections);
     }
 }
