@@ -10,7 +10,7 @@ namespace OnlineBank.API.Models
         public string? TransferId { get; set; }
         public long SourceAccountNumber { get; set; }
         public long destinationAccountNumber { get; set; }
-        public int DestinationAccountTypeId { get; set; }
+        public string DestinationAccountTypeId { get; set; } = null!;
         public float TransferAmount { get; set; }
     }
 }

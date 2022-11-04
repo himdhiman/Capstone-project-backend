@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System.Text.Json.Serialization;
 
 namespace OnlineBank.API.Models
 {
@@ -14,9 +15,15 @@ namespace OnlineBank.API.Models
         public string? LastName { get; set; }
         public string UserName { get; set; } = null!;
         public string Password { get; set; } = null!;
-        public string[] SecurityQuestions { get; set; } = null!;
-        public string[] SecurityAnswers { get; set; } = null!;
-        public int AccountTypeId { get; set; }
+
+        [BsonElement("items")]
+        [JsonPropertyName("items")]
+        public List<string> SecurityQuestions { get; set; } = null!;
+
+        [BsonElement("items")]
+        [JsonPropertyName("items")]
+        public List<string> SecurityAnswers { get; set; } = null!;
+        public string AccountTypeId { get; set; } = null!;
         public string MobileNumber { get; set; } = null!;
     }
 }
