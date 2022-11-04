@@ -6,9 +6,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'OnlineBank' " />
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="2.18.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="HelperTools\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="HelperTools\" />
+  </ItemGroup>
 </Project>
