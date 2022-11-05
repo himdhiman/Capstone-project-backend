@@ -21,5 +21,6 @@ namespace OnlineBank.API.Models
         public List<string> SecurityAnswers { get; set; } = null!;
         public string AccountTypeId { get; set; } = null!;
         public string MobileNumber { get; set; } = null!;
+        public float AccountBalance { get; set; }
     }
 }

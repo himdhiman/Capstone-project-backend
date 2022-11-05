@@ -11,12 +11,12 @@ namespace OnlineBank.API.Controllers
     [ApiController]
     public class CheckBalanceController : ControllerBase
     {
-        private readonly IAccountBalance<AtmDetails> _atmDetails;
+        private readonly IUserRepository _userDetails;
         private readonly IMapper _mapper;
 
         public CheckBalanceController(IDataService dataService, IMapper mapper)
         {
-            _atmDetails = dataService.BalanceDetailsObject;
+            _userDetails = dataService.UsersDataObject;
             _mapper = mapper;
         }
 
@@ -24,12 +24,12 @@ namespace OnlineBank.API.Controllers
         [HttpGet("{accno:length(10)}")]
         public async Task<ActionResult<AccountBalanceReturnObject>> Get(long accno)
         {
-            var atmDetails = await _atmDetails.GetAsync(accno);
-            if (atmDetails is null)
+            var userDetails = await _userDetails.GetAsyncByAccountNumber(accno);
+            if (userDetails is null)
             {
                 return NotFound();
             }
-            AccountBalanceReturnObject returnObject = _mapper.Map<AccountBalanceReturnObject>(atmDetails);
+            AccountBalanceReturnObject returnObject = _mapper.Map<AccountBalanceReturnObject>(userDetails);
             return returnObject;
         }
     }

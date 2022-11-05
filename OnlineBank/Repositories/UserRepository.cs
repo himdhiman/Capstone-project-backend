@@ -23,6 +23,9 @@ namespace OnlineBank.API.Repositories
         public async Task<User?> GetAsyncByUsername(string username) =>
             await _users.Find(x => x.UserName == username).FirstOrDefaultAsync();
 
+        public async Task<User?> GetAsyncByAccountNumber(long accountNumber) =>
+            await _users.Find(x => x.AccountNumber == accountNumber).FirstOrDefaultAsync();
+
         public async Task CreateAsync(User newUser) =>
             await _users.InsertOneAsync(newUser);
 
