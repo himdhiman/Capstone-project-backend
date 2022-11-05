@@ -15,7 +15,8 @@ namespace OnlineBank.API.Mappers
             CreateMap<User, AccountBalanceReturnObject>();
             CreateMap<User, UserReturnObject>()
                 .ForMember(dest => dest.AccountType, src => src.MapFrom(u => dataService.AccountsDataObject.GetAsync(u.AccountTypeId).Result.AccountType));
-;           CreateMap<FundTransferDTO, FundTransfer>()
+
+           CreateMap<FundTransferDTO, FundTransfer>()
                 .ForMember(dest => dest.DestinationAccountTypeId, src => src.MapFrom(u => dataService.UsersDataObject.GetAsyncByAccountNumber(u.destinationAccountNumber).Result.AccountTypeId));
             CreateMap<FundTransfer, Transaction>()
                 .ForMember(des => des.AccountNumber, src => src.MapFrom(u => u.SourceAccountNumber))
@@ -24,6 +25,13 @@ namespace OnlineBank.API.Mappers
                 .ForMember(des => des.TransactionDate, src => src.MapFrom(u => DateTime.Now))
                 .ForMember(des => des.Amount, src => src.MapFrom(u => u.TransferAmount));
 
+            CreateMap<AtmPinDTO, AtmDetails>();
+            CreateMap<ChangePinDTO, AtmDetails>();
+
         }
+
+            
+        }
+
     }
-}
+

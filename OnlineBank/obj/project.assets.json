@@ -1202,11 +1202,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\OnlineBank\\OnlineBank\\OnlineBank.API.csproj",
+      "projectUniqueName": "C:\\Users\\capstone_proj\\Capstone-project-backend\\OnlineBank\\OnlineBank.API.csproj",
       "projectName": "OnlineBank.API",
-      "projectPath": "C:\\Users\\Administrator\\Desktop\\OnlineBank\\OnlineBank\\OnlineBank.API.csproj",
+      "projectPath": "C:\\Users\\capstone_proj\\Capstone-project-backend\\OnlineBank\\OnlineBank.API.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Administrator\\Desktop\\OnlineBank\\OnlineBank\\obj\\",
+      "outputPath": "C:\\Users\\capstone_proj\\Capstone-project-backend\\OnlineBank\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wNG/S5PEZfM4BpUybly+BaowS9R/v8KuiYD35N0OdKwNGuTIdMTwqhLa/GfOz+UzrJ+1/8lstbBMdMMRvpTK0A==",
+  "dgSpecHash": "ikGgTbkItpvupnME4gjxXnnxczMZOd22aHbp+a/1rHeicJeEBAY8REDM1r3pSteSPAOoTzg5kJ+7ZFhMWrmYwQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrator\\Desktop\\OnlineBank\\OnlineBank\\OnlineBank.API.csproj",
+  "projectFilePath": "C:\\Users\\capstone_proj\\Capstone-project-backend\\OnlineBank\\OnlineBank.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
