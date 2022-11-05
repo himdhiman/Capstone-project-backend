@@ -6,5 +6,6 @@ namespace OnlineBank.API.Interfaces
     {
         Task<User?> GetAsyncByUsername(string username);
         Task<User?> GetAsyncByAccountNumber(long AccountNumber);
+        Task UpdateBalance(long AccountNumber, float Amount);
     }
 }

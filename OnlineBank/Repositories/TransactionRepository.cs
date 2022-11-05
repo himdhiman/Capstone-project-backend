@@ -5,7 +5,7 @@ using OnlineBank.API.Models;
 
 namespace OnlineBank.API.Repositories
 {
-    public class TransactionRepository : IRepository<Transaction>
+    public class TransactionRepository : ITransactionRepository
     {
         private readonly IMongoCollection<Transaction> _transaction;
 

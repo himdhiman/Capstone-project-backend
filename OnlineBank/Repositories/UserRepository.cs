@@ -32,6 +32,14 @@ namespace OnlineBank.API.Repositories
         public async Task UpdateAsync(string id, User updatedUser) =>
             await _users.ReplaceOneAsync(x => x.Id == id, updatedUser);
 
+        public async Task UpdateBalance(long AccountNumber, float Amount)
+        {
+            var filter = new FilterDefinitionBuilder<User>().Where(x => x.AccountNumber == AccountNumber);
+            var options = new FindOneAndUpdateOptions<User, User>();
+            var update = Builders<User>.Update.Set(p => p.AccountBalance, Amount);
+            await _users.UpdateOneAsync(filter, update);
+        }
+
         public async Task RemoveAsync(string id) => await _users.DeleteOneAsync(x => x.Id == id);
     }
 }

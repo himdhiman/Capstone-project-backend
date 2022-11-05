@@ -5,7 +5,7 @@ using OnlineBank.API.Models;
 
 namespace OnlineBank.API.Repositories
 {
-    public class FundTransferRepository : IRepository<FundTransfer>
+    public class FundTransferRepository : IFundTransferRepository
     {
         private readonly IMongoCollection<FundTransfer> _fundTransfer;
 
