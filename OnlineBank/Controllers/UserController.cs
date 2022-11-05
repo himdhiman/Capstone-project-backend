@@ -10,7 +10,7 @@ namespace OnlineBank.API.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IRepository<User> _usersService;
+        private readonly IUserRepository _usersService;
         private readonly IMapper _mapper;
 
         public UserController(IDataService dataService, IMapper mapper)
@@ -20,17 +20,35 @@ namespace OnlineBank.API.Controllers
         }
 
         [HttpGet]
-        public async Task<List<User>> Get() => await _usersService.GetAsync();
+        public async Task<List<UserReturnObject>> Get()
+        {
+            var users = await _usersService.GetAsync();
+            List<UserReturnObject> ReturnData = _mapper.Map<List<UserReturnObject>>(users);
+            return ReturnData;
 
+        }
         [HttpGet("{id:length(24)}")]
-        public async Task<ActionResult<User>> Get(string id)
+        public async Task<ActionResult<UserReturnObject>> Get(string id)
         {
             var user = await _usersService.GetAsync(id);
             if (user is null)
             {
                 return NotFound();
             }
-            return user;
+            UserReturnObject ReturnData = _mapper.Map<UserReturnObject>(user);
+            return ReturnData;
+        }
+
+        [HttpGet("{accno:length(10)}")]
+        public async Task<ActionResult<UserReturnObject>> Get(long accno)
+        {
+            var user = await _usersService.GetAsyncByAccountNumber(accno);
+            if (user is null)
+            {
+                return NotFound();
+            }
+            UserReturnObject ReturnData = _mapper.Map<UserReturnObject>(user);
+            return ReturnData;
         }
 
         [HttpPost]

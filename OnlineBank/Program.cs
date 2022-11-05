@@ -15,14 +15,12 @@ builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("D
 builder.Services.Configure<MongoCollections>(builder.Configuration.GetSection("MongoCollections"));
 
 builder.Services.AddSingleton<MongoContext>();
-builder.Services.AddScoped<IDataService, DataService>();
+builder.Services.AddSingleton<IDataService, DataService>();
 
-var mapperConfig = new MapperConfiguration(cfg =>
+builder.Services.AddSingleton(provider => new MapperConfiguration(cfg =>
 {
-    cfg.AddProfile(new AutoMapperProfile());
-});
-var mapper = mapperConfig.CreateMapper();
-builder.Services.AddSingleton(mapper);
+    cfg.AddProfile(new AutoMapperProfile(provider.GetService<IDataService>()));
+}).CreateMapper());
 
 
 
