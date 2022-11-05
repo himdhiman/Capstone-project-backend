@@ -17,6 +17,9 @@ namespace OnlineBank.API.Repositories
         public async Task<List<Transaction>> GetAsync() =>
             await _transaction.Find(_ => true).ToListAsync();
 
+        public async Task<List<Transaction>> GetAsync(long accno) =>
+            await _transaction.Find(_ => true).ToListAsync();
+
         public async Task<Transaction?> GetAsync(string id) =>
             await _transaction.Find(x => x.TransactionId == id).FirstOrDefaultAsync();
 
