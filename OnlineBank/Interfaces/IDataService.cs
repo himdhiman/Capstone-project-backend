@@ -11,6 +11,8 @@ namespace OnlineBank.API.Interfaces
 
         public IFundTransferRepository FundTransferDataObject { get; }
         public ITransactionRepository TransactionDataObject { get; }
+
+        public IChequeBookRepo CheckBookDetailsDataObject { get; }
     
     }
 }

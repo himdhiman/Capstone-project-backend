@@ -3,7 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace OnlineBank.API.Models
 {
-    public class CheckBookDetails
+    public class ChequeBookDetails
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
