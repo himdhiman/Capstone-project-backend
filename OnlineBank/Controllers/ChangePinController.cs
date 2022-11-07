@@ -11,15 +11,13 @@ namespace OnlineBank.API.Controllers
     [ApiController]
     public class ChangePinController : ControllerBase
     {
-        private readonly IAtmDetailsRepository _userService;
+        private readonly IAtmDetailsRepository atmDetailsService;
         private readonly IUserRepository _userDetails;
-        private readonly IMapper _mapper;
 
         public ChangePinController(IDataService dataService, IMapper mapper)
         {
-            _userService = dataService.AtmDetailsDataObject;
+            atmDetailsService = dataService.AtmDetailsDataObject;
             _userDetails = dataService.UsersDataObject;
-            _mapper = mapper;
         }
 
         [HttpPost]
@@ -45,7 +43,7 @@ namespace OnlineBank.API.Controllers
 
 
             var user_details = await _userDetails.GetAsyncByAccountNumber(accno);
-            var user_service = await _userService.GetAsync(accno);
+            var user_service = await atmDetailsService.GetAsync(accno);
             if (user_details == null)
             {
                 return BadRequest("Account Number does not exist");
@@ -57,20 +55,13 @@ namespace OnlineBank.API.Controllers
                 return BadRequest("Pin is not set for the account number. Please set the pin using SetPin option");
             }
 
-            var chk_pin = await _userService.GetAsync(old_pin,accno);
+            var chk_pin = await atmDetailsService.GetAsync(old_pin,accno);
             if (chk_pin == null)
             {
                 return BadRequest("Entered Pin does not match the current pin");
             }
 
-
-
-           // AtmDetails atm = _mapper.Map<AtmDetails>(atm_details);
-
-           
-
-
-            await _userService.UpdateAsync(accno, new_pin); 
+            await atmDetailsService.UpdateAsync(accno, new_pin); 
             return Ok("Pin changed sucessfully");
 
         }
