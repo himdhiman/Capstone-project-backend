@@ -25,6 +25,11 @@ namespace OnlineBank.API.Mappers
                 .ForMember(des => des.TransactionDate, src => src.MapFrom(u => DateTime.Now))
                 .ForMember(des => des.Amount, src => src.MapFrom(u => u.TransferAmount));
 
+            CreateMap<User, AccountNumberDTO>();
+
+
+
+
             CreateMap<AtmPinDTO, AtmDetails>();
             CreateMap<ChangePinDTO, AtmDetails>();
 

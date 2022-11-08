@@ -52,12 +52,13 @@ namespace OnlineBank.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(UserDTO newUser)
+        public async Task<ActionResult<AccountNumberDTO>> Post(UserDTO newUser)
         {
             User user = _mapper.Map<User>(newUser);
             await _usersService.CreateAsync(user);
 
-            return NoContent();
+            AccountNumberDTO ReturnObject = _mapper.Map<AccountNumberDTO>(user);
+            return ReturnObject;
         }
     }
 }
