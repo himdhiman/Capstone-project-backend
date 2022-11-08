@@ -11,7 +11,9 @@ namespace OnlineBank.API.Mappers
         public AutoMapperProfile(IDataService dataService)
         {
             CreateMap<UserDTO, User>()
-                .ForMember(dest => dest.AccountNumber, src => src.MapFrom(u => AccountNumberGenerator.GenerateRandomAccountNumber()));
+                .ForMember(dest => dest.AccountNumber, src => src.MapFrom(u => AccountNumberGenerator.GenerateRandomAccountNumber()))
+                .ForMember(dest => dest.AccountTypeId, src => src.MapFrom(u => dataService.AccountsDataObject.GetAsyncByName(u.AccountTypeId).Result.AccountTypeId));
+
             CreateMap<User, AccountBalanceReturnObject>();
             CreateMap<User, UserReturnObject>()
                 .ForMember(dest => dest.AccountType, src => src.MapFrom(u => dataService.AccountsDataObject.GetAsync(u.AccountTypeId).Result.AccountType));

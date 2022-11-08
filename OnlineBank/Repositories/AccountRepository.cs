@@ -5,7 +5,7 @@ using OnlineBank.API.Models;
 
 namespace OnlineBank.API.Repositories
 {
-    public class AccountRepository : IRepository<Account>
+    public class AccountRepository : IAccountRepository
     {
         private readonly IMongoCollection<Account> _accounts;
 
@@ -16,6 +16,9 @@ namespace OnlineBank.API.Repositories
 
         public async Task<List<Account>> GetAsync() =>
             await _accounts.Find(_ => true).ToListAsync();
+
+        public async Task<Account> GetAsyncByName(string name) =>
+            await _accounts.Find(x => x.AccountType == name).FirstOrDefaultAsync();
 
         public async Task<Account?> GetAsync(string id) =>
             await _accounts.Find(x => x.AccountTypeId == id).FirstOrDefaultAsync();
