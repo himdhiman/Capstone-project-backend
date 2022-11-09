@@ -6,20 +6,23 @@ using OnlineBank.API.Models.DTOs;
 
 namespace OnlineBank.API.Controllers
 {
-
+    //Controller for Change pin, integrated with the API
     [Route("api/[controller]")]
     [ApiController]
     public class ChangePinController : ControllerBase
     {
+        //Objects of respective interfaces
         private readonly IAtmDetailsRepository atmDetailsService;
         private readonly IUserRepository _userDetails;
 
+        //mapping objects using AutoMapper Service in C#
         public ChangePinController(IDataService dataService, IMapper mapper)
         {
             atmDetailsService = dataService.AtmDetailsDataObject;
             _userDetails = dataService.UsersDataObject;
         }
 
+        //implementing multi-threading for parallel requests
         [HttpPost]
         public async Task<IActionResult> Post(ChangePinDTO atm_details)
         {

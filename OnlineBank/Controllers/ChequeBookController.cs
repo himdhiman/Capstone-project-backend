@@ -6,21 +6,26 @@ using OnlineBank.API.Models.DTOs;
 
 namespace OnlineBank.API.Controllers
 {
+    //Controller for Cheque Book, integrated with the API
     [Route("api/[controller]")]
     [ApiController]
     public class ChequeBookController :ControllerBase
     {
-            private readonly IUserRepository _userDetails;
-            private readonly IChequeBookRepo _chqBook;
 
-            public ChequeBookController(IDataService dataService)
+        //Objects of respective interfaces
+        private readonly IUserRepository _userDetails;
+        private readonly IChequeBookRepo _chqBook;
+
+        //mapping objects using AutoMapper Service in C#
+        public ChequeBookController(IDataService dataService)
             {
                 _userDetails = dataService.UsersDataObject;
                 _chqBook = dataService.CheckBookDetailsDataObject;
               
             }
 
-         
+        //implementing multi-threading for parallel requests
+        //Validation applied for length of Account number 
         [HttpGet("{accno:length(10)}")]
         public async Task<ActionResult> Get(long accno)
         {
