@@ -20,9 +20,9 @@ namespace OnlineBank.API.Controllers
               
             }
 
-
-        [HttpPost("{accno:length(10)}")]
-        public async Task<ActionResult> Post(long accno)
+         
+        [HttpGet("{accno:length(10)}")]
+        public async Task<ActionResult> Get(long accno)
         {
             var userDetails = await _userDetails.GetAsyncByAccountNumber(accno);
             if (userDetails is null)
