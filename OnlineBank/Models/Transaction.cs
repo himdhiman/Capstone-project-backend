@@ -1,6 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
+//Placeholder to define type of variables in respective class
 namespace OnlineBank.API.Models
 {
     public class Transaction

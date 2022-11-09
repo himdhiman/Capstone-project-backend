@@ -1,4 +1,5 @@
-﻿namespace OnlineBank.API.Models
+﻿//Placeholder to define type of variables in respective class
+namespace OnlineBank.API.Models
 {
     public class MongoCollections
     {
