@@ -29,10 +29,6 @@ namespace OnlineBank.API.Controllers
         public async Task<List<Transaction>> Get(long accno)
         {
             var data = await _transactionService.GetAsync(accno);
-            if(data.Count > 5)
-            {
-                return data.GetRange(data.Count - 6, data.Count);
-            }
             return data;
         }
     }
