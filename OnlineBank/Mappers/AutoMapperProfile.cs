@@ -16,7 +16,9 @@ namespace OnlineBank.API.Mappers
 
             CreateMap<User, AccountBalanceReturnObject>();
             CreateMap<User, UserReturnObject>()
-                .ForMember(dest => dest.AccountType, src => src.MapFrom(u => dataService.AccountsDataObject.GetAsync(u.AccountTypeId).Result.AccountType));
+                .ForMember(dest => dest.AccountType, src => src.MapFrom(u => dataService.AccountsDataObject.GetAsync(u.AccountTypeId).Result.AccountType))
+                .ForMember(dest => dest.SetPin, src => src.MapFrom(u => dataService.AtmDetailsDataObject.GetAsync(u.AccountNumber).Result != null));
+
             CreateMap<AccountDTO, Account>();
 
            CreateMap<FundTransferDTO, FundTransfer>()

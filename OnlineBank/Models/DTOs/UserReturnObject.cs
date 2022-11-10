@@ -13,5 +13,6 @@
         public string AccountType { get; set; } = null!;
         public string MobileNumber { get; set; } = null!;
         public float AccountBalance { get; set; }
+        public bool SetPin { get; set; }
     }
 }

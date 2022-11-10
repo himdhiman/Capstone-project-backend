@@ -62,7 +62,7 @@ namespace OnlineBank.API.Controllers
             }
 
             await atmDetailsService.UpdateAsync(accno, new_pin); 
-            return Ok("Pin changed sucessfully");
+            return NoContent();
 
         }
     }

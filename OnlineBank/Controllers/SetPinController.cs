@@ -57,7 +57,7 @@ namespace OnlineBank.API.Controllers
             AtmDetails atm = _mapper.Map<AtmDetails>(atm_details);
             await _userService.CreateAsync(atm);
 
-            return Ok("Pin set sucessfully");
+            return NoContent();
 
         }
 
