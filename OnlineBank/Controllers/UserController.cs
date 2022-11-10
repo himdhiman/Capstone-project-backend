@@ -6,13 +6,16 @@ using OnlineBank.API.Models.DTOs;
 
 namespace OnlineBank.API.Controllers
 {
+    //Controller for User, integrated with the API
     [Route("api/users/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
+        //Objects of respective interfaces
         private readonly IUserRepository _usersService;
         private readonly IMapper _mapper;
 
+        //mapping objects using AutoMapper Service in C#
         public UserController(IDataService dataService, IMapper mapper)
         {
             _usersService = dataService.UsersDataObject;
@@ -39,6 +42,8 @@ namespace OnlineBank.API.Controllers
             return ReturnData;
         }
 
+        //implementing multi-threading for parallel requests
+        //Validation applied for length of Account number 
         [HttpGet("{accno:length(10)}")]
         public async Task<ActionResult<UserReturnObject>> Get(long accno)
         {

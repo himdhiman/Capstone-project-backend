@@ -6,15 +6,17 @@ using OnlineBank.API.Models.DTOs;
 
 namespace OnlineBank.API.Controllers
 {
-
+    //Controller to Set Pin, integrated with the API
     [Route("api/[controller]")]
     [ApiController]
     public class SetPinController: ControllerBase
     {
+        //Objects of respective interfaces
         private readonly IAtmDetailsRepository _userService;
         private readonly IUserRepository _userDetails;
         private readonly IMapper _mapper;
 
+        //mapping objects using AutoMapper Service in C#
         public SetPinController(IDataService dataService, IMapper mapper)
         {
             _userService = dataService.AtmDetailsDataObject;
@@ -22,6 +24,7 @@ namespace OnlineBank.API.Controllers
             _mapper = mapper;
         }
 
+        //implementing multi-threading for parallel requests
         [HttpPost]
         public async Task<IActionResult> Post(AtmPinDTO atm_details)
         {

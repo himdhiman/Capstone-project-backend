@@ -3,6 +3,7 @@ using MongoDB.Driver;
 using OnlineBank.API.Interfaces;
 using OnlineBank.API.Models;
 
+//Defining the methods as declared in respective Interfaces
 namespace OnlineBank.API.Repositories
 {
     public class AtmDetailsRepository : IAtmDetailsRepository

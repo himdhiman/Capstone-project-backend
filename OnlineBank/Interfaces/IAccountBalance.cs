@@ -1,4 +1,5 @@
-﻿namespace OnlineBank.API.Interfaces
+﻿//placeholder for method declaration, by default public and abstract
+namespace OnlineBank.API.Interfaces
 {
     public interface IAccountBalance<T>
     {

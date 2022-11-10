@@ -7,15 +7,18 @@ using OnlineBank.API.Validators;
 
 namespace OnlineBank.API.Controllers
 {
+    //Controller for Fund Transfer, integrated with the API
     [Route("api/[controller]")]
     [ApiController]
     public class FundTransferController : ControllerBase
     {
+        //Objects of respective interfaces
         private readonly IUserRepository _usersService;
         private readonly IFundTransferRepository _fundTransferService;
         private readonly ITransactionRepository _transactionService;
         private readonly IMapper _mapper;
 
+        //mapping objects using AutoMapper Service in C#
         public FundTransferController(IDataService dataservice, IMapper mapper)
         {
             _usersService = dataservice.UsersDataObject;
@@ -24,6 +27,7 @@ namespace OnlineBank.API.Controllers
             _transactionService = dataservice.TransactionDataObject;
         }
 
+        //implementing multi-threading for parallel requests
         [HttpPost]
         public async Task<IActionResult> Transfer(FundTransferDTO newFundTransfer)
         {

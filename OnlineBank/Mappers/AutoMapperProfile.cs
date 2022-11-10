@@ -4,6 +4,8 @@ using OnlineBank.API.Interfaces;
 using OnlineBank.API.Models;
 using OnlineBank.API.Models.DTOs;
 
+//Mapping respective API objects to Database Objects.
+//Defining mapping for different variables. 
 namespace OnlineBank.API.Mappers
 {
     public class AutoMapperProfile : Profile

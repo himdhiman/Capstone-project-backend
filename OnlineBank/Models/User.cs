@@ -2,6 +2,7 @@
 using MongoDB.Bson.Serialization.Attributes;
 using OnlineBank.API.Validators;
 
+//Placeholder to define type of variables in respective class
 namespace OnlineBank.API.Models
 {
     public class User
