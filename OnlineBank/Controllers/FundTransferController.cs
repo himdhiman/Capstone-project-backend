@@ -37,10 +37,15 @@ namespace OnlineBank.API.Controllers
                 return BadRequest("Invalid Data");
             }
             FundTransfer fundTransfer = _mapper.Map<FundTransfer>(newFundTransfer);
-            Transaction transaction = _mapper.Map<Transaction>(fundTransfer);
+            Transaction transactionSource = _mapper.Map<Transaction>(fundTransfer);
+            transactionSource.Credited = false;
+            Transaction transactionDestination = _mapper.Map<Transaction>(fundTransfer);
+            transactionDestination.AccountNumber = newFundTransfer.destinationAccountNumber;
+            transactionDestination.Credited = true;
 
             await _fundTransferService.CreateAsync(fundTransfer);
-            await _transactionService.CreateAsync(transaction); 
+            await _transactionService.CreateAsync(transactionSource);
+            await _transactionService.CreateAsync(transactionDestination);
 
             return NoContent();
         }

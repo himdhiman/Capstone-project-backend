@@ -14,5 +14,6 @@ namespace OnlineBank.API.Models
         public string TransactionType { get; set; } = null!;
         public DateTime TransactionDate { get; set; }
         public float Amount { get; set; }
+        public bool Credited { get; set; }
     }
 }
